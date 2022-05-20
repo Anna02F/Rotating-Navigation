@@ -1,0 +1,196 @@
+:root {
+    --link-color: rgb(172, 170, 170);
+    --white-color: rgba(255, 255, 255);
+    --text-color: #333;
+    --body-color: rgb(2 31 6);
+}
+
+*,
+*::before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%; /*62.5% of the root element(10px)*/
+}
+
+body {
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    background: var(--body-color);
+    z-index: -1;
+    overflow-x: hidden;
+    height: 100vh;
+}
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 6rem;
+    margin: 3rem 0 1rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+    font-weight: lighter;
+    margin: 1rem;
+}
+
+p {
+    margin: 2rem 0;
+}
+
+/* Container */
+.container {
+    width: 100vw;
+    padding: 1rem 12rem;
+    transform-origin: top left;
+    transition: transform 0.5s ease;
+    background: var(--white-color);
+}
+
+.content {
+    max-width: 1000px;
+    margin: 5rem auto;
+}
+
+.content small,
+.content time {
+    color: #555;
+    font-style: italic;
+}
+
+.content p {
+    color: --text-color;
+    line-height: 1.5;
+}
+
+/* Nav toggler */
+
+.nav-toggler-container {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+}
+.nav-toggler {
+    position: relative;
+    background: #0a970f;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+    width: 200px;
+    padding: 2rem;
+    transition: transform 0.5s ease;
+    z-index: 1000;
+}
+
+.nav-toggler button {
+    cursor: pointer;
+    color: var(--white-color);
+    background: transparent;
+    border: 0;
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 20%;
+}
+
+.nav-toggler button:focus,
+.nav-toggler button:active {
+    outline: none;
+}
+
+.open-menu {
+    right: 25%;
+}
+
+.close-menu {
+    transform: rotate(-5deg);
+    left: 25%;
+    bottom: 25%;
+}
+
+/* Nav */
+.nav {
+    position: fixed;
+    bottom: 15%;
+    left: 0;
+    z-index: 100;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Nav links */
+
+.nav__list {
+    padding-left: 3rem;
+}
+
+.nav__list li {
+    width: 100%;
+    margin: 4rem 0;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    text-align: center;
+    transform: translateX(-150%);
+    transition: all 0.4s ease-in;
+}
+
+.nav__list li + li {
+    --margin-left: 1.5rem;
+    margin-left: var(--margin-left);
+    transform: translateX(-200%);
+}
+
+.nav__list li + li + li {
+    margin-left: calc(var(--margin-left) * 2);
+    transform: translateX(-250%);
+}
+
+.nav__list li:last-of-type {
+    margin-left: calc(var(--margin-left) * 3);
+    transform: translateX(-300%);
+}
+
+.nav__list__item a:hover,
+.nav__list__item a:focus,
+.nav__list__item a:active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.nav__list a {
+    display: inline-block;
+    width: 100%;
+    color: var(--link-color);
+    opacity: 0.7;
+    outline: 0;
+}
+
+/* Nav is open */
+
+.nav-is-open .nav-toggler {
+    transform: rotate(-65deg);
+}
+
+.nav-is-open .container {
+    transform: rotate(-20deg);
+}
+
+.nav-is-open .nav .nav__list li {
+    transform: translateX(0);
+}
